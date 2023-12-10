@@ -1,15 +1,18 @@
 #' @title Multinomial Logistic Regression
 #'
-#' The spectral signature is calculated by taking the modulus of the
-#' Fourier coefficients of the signal.
-#' @param x an object inherited from a data.frame with columns X, Y, Z, and time
-#' sorted in time.
-#' @param take_log should the log of the modulus be taken. (Default is `TRUE`)
-#' @param inverse should the unnormalized inverse transform is computed.
-#' (Default is `TRUE`)
-#' @return a data frame with the modulus of the Fourier coefficients for the
-#' X, Y, and Z channels.
-#' @importFrom purrr map_dfc
-#' @importFrom dplyr vars mutate_at select
-#' @aliases spec_sig
+#' @description
+#' Multinomial Logistic Regression for analysis.
+#' @param d cleaned table for analysis
+#' @return a data frame with the
+#' @importFrom purrr
+#' @importFrom dplyr
+#' @importFrom nnet multinom
 #' @export
+mult_logit = function(d){
+
+  model <- multinom(BEST ~ ATRT + TYPE + SEX + AGE + B_WEIGHT + B_HEIGHT + RACE, data = d)
+
+  tidy(model, conf.int = TRUE, exponentiate = TRUE) |>
+    kable() |>
+    kable_styling("basic", full_width = FALSE)
+}
