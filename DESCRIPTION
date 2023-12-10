@@ -14,18 +14,17 @@ RoxygenNote: 7.2.3
 Imports:
   dplyr,
   ggplot2,
+  tidyr,
+  dplyr,
   purrr,
-  tidyr
+  haven,
+  nnet
 Suggests: 
     knitr,
     rmarkdown,
     lubridate,
     testthat (>= 3.0.0),
-    vdiffr,
-    tidyr,
-    dplyr,
-    purrr,
-    haven
+    vdiffr
 Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
