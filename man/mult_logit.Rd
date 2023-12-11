@@ -2,30 +2,16 @@
 % Please edit documentation in R/multi_logit.R
 \name{mult_logit}
 \alias{mult_logit}
-\alias{spec_sig}
-\title{Multinomial Logistic Regression
-
-The spectral signature is calculated by taking the modulus of the
-Fourier coefficients of the signal.}
+\title{Multinomial Logistic Regression}
 \usage{
-mult_logit()
+mult_logit(d)
 }
 \arguments{
-\item{x}{an object inherited from a data.frame with columns X, Y, Z, and time
-sorted in time.}
-
-\item{take_log}{should the log of the modulus be taken. (Default is \code{TRUE})}
-
-\item{inverse}{should the unnormalized inverse transform is computed.
-(Default is \code{TRUE})}
+\item{d}{cleaned table for analysis}
 }
 \value{
-a data frame with the modulus of the Fourier coefficients for the
-X, Y, and Z channels.
+a data frame with the
 }
 \description{
-Multinomial Logistic Regression
-
-The spectral signature is calculated by taking the modulus of the
-Fourier coefficients of the signal.
+Multinomial Logistic Regression for analysis.
 }
