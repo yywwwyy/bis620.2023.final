@@ -2,23 +2,40 @@
 
 export(gen_data)
 export(hello)
+<<<<<<< HEAD
 export(mult_logit)
+=======
+export(num_plot)
+>>>>>>> bef03a76b12d9ecb2b8e201c0cdac890d37556f8
 export(plot_accel)
 export(spec_sig)
 export(spectral_signature)
+export(type_plot)
+importFrom(dplyr,.data)
 importFrom(dplyr,filter)
 importFrom(dplyr,first)
 importFrom(dplyr,group_by)
 importFrom(dplyr,mutate_at)
+importFrom(dplyr,n)
 importFrom(dplyr,select)
+importFrom(dplyr,summarise)
 importFrom(dplyr,summarize)
 importFrom(dplyr,vars)
 importFrom(generics,tidy)
 importFrom(ggplot2,aes)
 importFrom(ggplot2,facet_grid)
+importFrom(ggplot2,geom_col)
 importFrom(ggplot2,geom_line)
+importFrom(ggplot2,geom_point)
 importFrom(ggplot2,ggplot)
+<<<<<<< HEAD
 importFrom(gtsummary,tbl_regression)
 importFrom(nnet,multinom)
+=======
+importFrom(ggplot2,labs)
+importFrom(ggplot2,theme)
+importFrom(ggplot2,theme_bw)
+importFrom(ggplot2,theme_minimal)
+>>>>>>> bef03a76b12d9ecb2b8e201c0cdac890d37556f8
 importFrom(purrr,map_dfc)
 importFrom(tidyr,pivot_longer)

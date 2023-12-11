@@ -55,6 +55,9 @@ gen_data <- function(){
 
   adrsp_adsl <- merge(adrsp_arm_1, adsl, by = 'SUBJID')
 
-  df <- merge(id_total, adrsp_adsl) |> select(c('TYPE', 'ATRT', 'SEX', 'AGE', 'B_WEIGHT', 'B_HEIGHT', 'RACE', 'BEST'))
+  df <- merge(id_total, adrsp_adsl) |>
+    select(c('TYPE', 'ATRT', 'SEX', 'AGE', 'B_WEIGHT', 'B_HEIGHT', 'RACE', 'BEST')) |>
+    filter(BEST != 'NA')
+
   return(df)
 }
