@@ -15,16 +15,16 @@ Imports:
   dplyr,
   ggplot2,
   tidyr,
-  dplyr,
   purrr,
-  haven,
-  nnet
+  nnet,
+  generics
 Suggests: 
     knitr,
     rmarkdown,
     lubridate,
     testthat (>= 3.0.0),
-    vdiffr
+    vdiffr,
+    haven,
 Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
