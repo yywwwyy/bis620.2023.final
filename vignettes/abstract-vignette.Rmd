@@ -15,7 +15,8 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-devtools::install_github("yywwwyy/bis620.2023.final")
+#install.package(devtools)
+#devtools::install_github("yywwwyy/bis620.2023.final")
 library(bis620.2023.final)
 library(dplyr)
 library(ggplot2)
