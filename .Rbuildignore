@@ -5,6 +5,6 @@
 ^README\.Rmd$
 ^\.github$
 ^docs$
-
+^abstract-vignette\.html$
 ^doc$
 ^Meta$
