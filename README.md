@@ -5,43 +5,18 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/kaneplusplus/bis620.2023/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kaneplusplus/bis620.2023/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/yywwwyy/bis620.2023.final/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/yywwwyy/bis620.2023.final/actions/workflows/R-CMD-check.yaml)
+[![test-coverage](https://github.com/yywwwyy/bis620.2023.final/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/yywwwyy/bis620.2023.final/actions/workflows/test-coverage.yaml)
 <!-- badges: end -->
 
 ## Installation
 
-You can install the development version of bis620.2023 from
+You can install the development version of bis620.2023.final from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("yywwwyy/bis620.2023.final")
-#> Downloading GitHub repo yywwwyy/bis620.2023.final@HEAD
-#> rlang (1.1.1 -> 1.1.2) [CRAN]
-#> Installing 1 packages: rlang
-#> Installing package into 'C:/Users/12862/AppData/Local/R/win-library/4.3'
-#> (as 'lib' is unspecified)
-#> package 'rlang' successfully unpacked and MD5 sums checked
-#> Warning: cannot remove prior installation of package 'rlang'
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\12862\AppData\Local\R\win-library\4.3\00LOCK\rlang\libs\x64\rlang.dll
-#> to C:\Users\12862\AppData\Local\R\win-library\4.3\rlang\libs\x64\rlang.dll:
-#> Permission denied
-#> Warning: restored 'rlang'
-#> 
-#> The downloaded binary packages are in
-#>  C:\Users\12862\AppData\Local\Temp\RtmpE9iYWA\downloaded_packages
-#> ── R CMD build ─────────────────────────────────────────────────────────────────
-#>          checking for file 'C:\Users\12862\AppData\Local\Temp\RtmpE9iYWA\remotesbe744d291168\yywwwyy-bis620.2023.final-ddd846a/DESCRIPTION' ...     checking for file 'C:\Users\12862\AppData\Local\Temp\RtmpE9iYWA\remotesbe744d291168\yywwwyy-bis620.2023.final-ddd846a/DESCRIPTION' ...   ✔  checking for file 'C:\Users\12862\AppData\Local\Temp\RtmpE9iYWA\remotesbe744d291168\yywwwyy-bis620.2023.final-ddd846a/DESCRIPTION'
-#>       ─  preparing 'bis620.2023.final': (477ms)
-#>    checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-#>       ─  checking for LF line-endings in source and make files and shell scripts
-#>   ─  checking for empty or unneeded directories
-#>       ─  building 'bis620.2023.final_0.1.0.tar.gz'
-#>      
-#> 
-#> Installing package into 'C:/Users/12862/AppData/Local/R/win-library/4.3'
-#> (as 'lib' is unspecified)
+# devtools::install_github("yywwwyy/bis620.2023.final")
 ```
 
 ## Example
