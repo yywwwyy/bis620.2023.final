@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
+devtools::install_github("yywwwyy/bis620.2023.final")
 library(bis620.2023.final)
 library(dplyr)
 library(ggplot2)
@@ -38,7 +39,7 @@ Our first step to clean the data set, we join 3 tables (adls, adrsp, biomark) by
 
 ```{r}
 #use our comprehensive function to derive the merged table with our target variables
-gen_data()
+head(gen_data())
 ```
 ```{r}
 #distribution of best response based on patient types

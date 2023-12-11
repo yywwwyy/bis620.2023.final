@@ -13,31 +13,43 @@ knitr::opts_chunk$set(
 )
 ```
 
-# bis620.2023
+# bis620.2023.final
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/kaneplusplus/bis620.2023/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kaneplusplus/bis620.2023/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of bis620.2023 is to ...
 
 ## Installation
 
 You can install the development version of bis620.2023 from [GitHub](https://github.com/) with:
 
-``` r
+```{r}
 # install.packages("devtools")
-devtools::install_github("kaneplusplus/bis620.2023")
+devtools::install_github("yywwwyy/bis620.2023.final")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to get the cleaned data set and do plot.
 
 ```{r example}
-library(bis620.2023)
-accel |> 
-  head(100) |> 
-  plot_accel()
+library(bis620.2023.final)
+head(gen_data())
+type_plot(gen_data())
+```
+## Abstract of our research
+
+Our research aims to employ logistic regression analysis to examine the predictive value of mutation type, treatment type, sex, age, weight, height, and race on the response to treatment in mCRC. The significance of these predictors will be assessed through p-values, providing insights into their relative importance and guiding future personalized treatment strategies.
+
+## Vignette
+
+You can read the statistical report from the vignette of this package. The vignette is under the name of abstract-vignette.html in the main folder. You need to open it in a browser.
+
+You can also use the code below to build the vignette to read.
+
+```{r example2}
+library(devtools)
+build_vignettes()
 ```
 
