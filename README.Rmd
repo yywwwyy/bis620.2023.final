@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-You can install the development version of bis620.2023 from [GitHub](https://github.com/) with:
+You can install the development version of bis620.2023.final from [GitHub](https://github.com/) with:
 
 ```{r}
 # install.packages("devtools")
@@ -46,10 +46,4 @@ Our research aims to employ logistic regression analysis to examine the predicti
 
 You can read the statistical report from the vignette of this package. The vignette is under the name of abstract-vignette.html in the main folder. You need to open it in a browser.
 
-You can also use the code below to build the vignette to read.
-
-```{r example2}
-library(devtools)
-build_vignettes()
-```
 
