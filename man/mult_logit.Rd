@@ -10,7 +10,7 @@ mult_logit(d)
 \item{d}{cleaned table for analysis}
 }
 \value{
-a data frame with the
+a data frame with the logit result
 }
 \description{
 Multinomial Logistic Regression for analysis.
