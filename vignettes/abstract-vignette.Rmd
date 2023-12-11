@@ -1,0 +1,98 @@
+---
+title: "abstract-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{abstract-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bis620.2023.final)
+library(dplyr)
+library(ggplot2)
+```
+
+## 1. Background and motivation
+
+Our research is based on the data set derived from the Panitumumab Randomized Trial in Combination with Chemotherapy for Metastatic Colo rectal Cancer, an intervention study designed with a rigorous approach. The purpose of this research is to evaluate the therapeutic efficacy of panitumumab when used in conjunction with the FOLFOX chemotherapy regimen, as opposed to using FOLFOX alone. 
+
+The motivation for our research lies in the pressing need to personalize cancer treatment. By identifying which patient characteristics can predict the best response to treatment, clinicians can tailor therapy to individual patients, potentially enhancing efficacy and minimizing unnecessary exposure to side effects. Previous studies have highlighted the importance of genetic markers, such as KRAS mutation status, in predicting response to EGFR inhibitors. However, there is still a need to explore how other variables, including demographic and physiological patient characteristics, contribute to treatment outcomes.
+
+Our study aims to fill this gap by employing logistic regression analysis to examine the predictive value of mutation type, treatment type, sex, age, weight, height, and race on the response to treatment in mCRC. The significance of these predictors will be assessed through p-values, providing insights into their relative importance and guiding future personalized treatment strategies.
+
+## 2. Research question
+
+Can patient characteristics such as mutation type (mutant, wild, unknown), administered treatment (ATRT), sex, age, weight, height, and race be used as significant predictors of the best response (complete response, partial response, stable disease, progressive disease) to treatment in metastatic colorectal cancer?
+
+## 3. Data cleaning and exploration
+
+Our first step to clean the data set, we join 3 tables (adls, adrsp, biomark) by subject id. adls includes all the geographical features and ATRT(actual treatment). adrsp includes our best response which is our target Y. biomark includes TYPE which is an important predictor. By dropping all the 'na" values, we can use this data set to do further analysis.
+
+```{r}
+#use our comprehensive function to derive the merged table with our target variables
+gen_data()
+```
+```{r}
+#distribution of best response based on patient types
+type_plot(gen_data())
+```
+
+Based on this plot, we can see that unknown type patient only occupy less than 1/9 of the total population. Partial response and stable disease tend to are the largest response group since most patients are less likely to have obvious improvement or exacerbation after receiving treatment.
+
+```{r}
+#exploration of numerical data
+num_plot(gen_data(), 'AGE')
+num_plot(gen_data(), 'B_WEIGHT')
+num_plot(gen_data(), 'B_HEIGHT')
+```
+
+Age: The age plot suggests a concentration of cases for patients between 50 and 70 years old. This could indicate that the majority of patients responding to treatment are within this age range. It is a common trend for the incidence of colorectal cancer to increase with age, which may explain the higher number of patients and treatment responses observed in this age bracket. This trend would merit further statistical analysis to evaluate the significance of age as a factor in treatment response.
+
+Baseline Weight (B_WEIGHT): The weight plot shows a concentration of responses (partial and stable) in the lower weight range. But the distribution of weight still follows the normal distribution when considering those extreme large weight as outliers. 
+
+Baseline Height (B_HEIGHT): The third figure, concerning baseline height, shows a extremely high concentration of height around 170 for partial response. The rest of the distribution of responses seems relatively uniform across the height spectrum with no distinct trend relating height to response type.
+
+```{r}
+#Race data are too biased with extremely unbalanced distribution
+ggplot(data = gen_data(), aes(x = RACE)) +
+  geom_bar() +
+  theme_minimal() +
+  labs(x = "Race", y = "Count", title = "Distribution of Race")
+```
+
+## 4. Analysis
+
+During the process of conducting logistic regression model, we find that all races are not evenly distributed across all races, races except White are extremely small and may lead to bias on analysis. Height and Weight tends to show some trends but they are mainly caused by the bell shape population of these baseline demographical features. When we try to include them in our logistic regression model, they tend to provide a biased prediction. So we exclude them from our features.
+
+```{r}
+mult_logit(gen_data())
+```
+# Analysis of Logistic Regression Model
+
+Treatment Regimen (ATRT): The coefficient for 'ATRT Panitumumab + FOLFOX' is positive for partial response but negative for stable and progressive disease, indicating that adding Panitumumab to FOLFOX may increase the likelihood of a partial response but could be associated with a lower likelihood of achieving stable disease when compared to FOLFOX alone.The P-value is close to 1 which is statistically insignificant across the prediction of all kinds of responses.
+
+KRAS Mutation Type (TYPE): Wild-type KRAS status is negatively associated with stable and progressive disease, suggesting that patients with wild-type KRAS might be less likely to experience stable or progressive disease, aligning with clinical expectations that patients with wild-type KRAS respond better to treatments targeting EGFR. 
+
+The 'Unknown' type is not a statistically significant predictor in any response category, shown by the p-values being greater than 0.05. In contrast, 'Wild-type' KRAS has a statistically significant negative association with 'Stable disease', suggesting that patients with wild-type KRAS are less likely to have stable disease as a response to treatment.
+
+SEXMale: Being male is positively associated with 'Partial response', but this is not statistically significant, as indicated by the p-value. However, it's important to note that for 'Stable disease', being male is statistically significant, indicating that male patients may have a higher likelihood of experiencing stable disease.
+
+AGE: The negative coefficient for age across all response categories suggests that increasing age may slightly decrease the likelihood of a positive treatment response, which could align with the observed trend in the earlier plot showing higher response counts in the middle-age range.
+
+Age has a statistically significant negative effect on 'Partial response' and 'Progressive disease', suggesting that as age increases, the likelihood of having a partial response or experiencing progressive disease decreases.
+
+## 5. Interpretation and conclusions
+
+Our research utilizing logistic regression to predict treatment response in metastatic colorectal cancer revealed several insights. Although KRAS mutation status and patient sex appeared as potential predictors of treatment outcome, their effects varied across response categories and were not uniformly statistically significant. Age showed a consistent negative association with both partial and progressive disease responses, suggesting older patients may have a different response profile.
+
+Our key limitation is the small sample size and crucially, the uneven distribution of races within our data set highlighted a limitation in our analysis. The under representation of non-White races could lead to biased conclusions. Similarly, baseline demographic features like height and weight exhibited trends that could not be reliably disentangled from the population's natural distribution. Their inclusion in the model was found to introduce bias, prompting their exclusion from the final predictive features.
+
+In conclusion, our findings underscore the importance of considering demographic and genetic factors in predicting mCRC treatment outcomes. However, the results must be interpreted with caution due to potential biases arising from demographic imbalances within the study population. Future studies should aim for more racially diverse samples and investigate the complex interplay of demographic characteristics with cancer treatment responses to enable truly personalized medicine.
